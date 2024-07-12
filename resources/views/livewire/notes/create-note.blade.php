@@ -41,7 +41,7 @@ new class extends Component {
         <x-wui-input icon="user" wire:model="noteRecipient" label="Recipient" placeholder="yourfriend@email.com" type="email" />
         <x-wui-input icon="calendar" wire:model="noteSendDate" type="date" label="Send Date" />
         <div class="pt-4">
-            <x-wui-button wire:click="submit" primary right-icon="calendar" label="Schedule Note" spinner />
+            <x-wui-button type="submit" primary right-icon="calendar" label="Schedule Note" spinner />
         </div>
         <x-wui-errors />
     </form>

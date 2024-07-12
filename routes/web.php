@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Note;
 use Livewire\Volt\Volt;
 use Illuminate\Support\Facades\Route;
 
@@ -23,5 +24,15 @@ Route::view('notes/create', 'notes.create')
 Volt::route('notes/{note}/edit', 'notes.edit-note')
     ->middleware(['auth'])
     ->name('notes.edit');
+
+Route::get('notes/{notes}', function (Note $notes) {
+    if (!$notes->is_published) {
+        abort(404);
+    }
+
+    $user = $notes->user;
+
+    return view('notes.view', ['notes' => $notes, 'user' => $user]);
+})->name('notes.view');
 
 require __DIR__ . '/auth.php';
