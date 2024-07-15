@@ -33,7 +33,7 @@ class SendEmail implements ShouldQueue
 
         Mail::raw($emailContent, function ($message) {
             //We need an email in from that we have access to.
-            $message->from('sendnotes@zimfy.co', 'Sendnotes')
+            $message->from('sendnotes@gregorypaulrothstein.dev', 'The Sendnotes App')
                 ->to($this->note->recipient)
                 ->subject('You have a new note form ' . $this->note->user->name);
         });
